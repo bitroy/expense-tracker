@@ -1,0 +1,52 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  border-top: thin solid gray;
+  border-bottom: thin solid gray;
+}
+
+.form__select {
+  display: flex;
+  margin: 1rem;
+}
+
+.form__select_sortby {
+  width: 10rem;
+  height: 1.8rem;
+  font-size: 1rem;
+  border: thin solid gray;
+}
+
+.form__input {
+  display: flex;
+  margin: 0rem 1rem 1rem;
+}
+
+.form__input_searchtext {
+  flex-grow: 1;
+  border: thin solid gray;
+  height: 1.8rem;
+}
+
+.form__input_date {
+  margin: 0 1rem 1rem 1rem;
+}
+
+@media screen and (min-width: 700px) {
+  .form {
+    flex-direction: row;
+  }
+
+  .form__input {
+    width: 50%;
+    margin: 1rem;
+  }
+
+  .form__input_searchtext {
+    flex-grow: 1;
+  }
+
+  .form__input_date {
+    margin: 1rem;
+  }
+}

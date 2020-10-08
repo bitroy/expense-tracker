@@ -1,0 +1,67 @@
+.page_header {
+  display: flex;
+  justify-content: center;
+}
+
+.page_header__text {
+  font-size: 8vw;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.box_layout {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.box_layout__box {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  background-color: lightblue;
+  border: 2px solid black;
+  border-radius: 0.25rem;
+}
+
+.box_layout__name {
+  margin: 0.5rem;
+  font-size: 5vw;
+  text-align: center;
+  font-weight: bold;
+}
+
+.googlelogin {
+  background: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 0.25rem;
+  padding: 1rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 0.5rem;
+  font-weight: bold;
+  font-size: 4vw;
+}
+
+.googlelogin:hover {
+  background: whitesmoke;
+}
+
+@media screen and (min-width: 768px) {
+  .page_header__text {
+    font-size: 4vw;
+  }
+
+  .box_layout__name {
+    font-size: 2vw;
+  }
+
+  .googlelogin {
+    font-size: 1.5vw;
+    margin: 1rem;
+  }
+}

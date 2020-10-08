@@ -1,0 +1,35 @@
+.box_layout {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.box_layout__box {
+  display: flex;
+  flex-direction: column;
+}
+
+.box_layout__box_text {
+  font-weight: bold;
+  font-size: clamp(1rem, 1rem + 2vw, 2rem);
+}
+
+.box_layout__box_button {
+  align-self: flex-start;
+  background: #0062b8;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+@media screen and (min-width: 768px) {
+  .box_layout__box_button {
+    padding: 0.5rem;
+  }
+}
