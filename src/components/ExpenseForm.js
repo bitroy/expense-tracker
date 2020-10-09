@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import DatePicker from "react-date-picker";
+import { Modal } from "react-responsive-modal";
 import {
   startAddExpense,
   startEditExpense,
   startRemoveExpense,
 } from "../redux/actions/expenses";
+import "react-responsive-modal/styles.css";
 import styles from "../styles/ExpenseForm.module.css";
 
 class ExpenseForm extends React.Component {
@@ -17,6 +19,7 @@ class ExpenseForm extends React.Component {
       date: props.expense ? props.expense.createdAt : new Date(),
       note: props.expense ? props.expense.note : "",
       error: "",
+      showModal: false,
     };
   }
 
@@ -76,6 +79,14 @@ class ExpenseForm extends React.Component {
         this.props.history.push("/");
       }
     }
+  };
+
+  handleOpenModal = () => {
+    this.setState(() => ({ showModal: true }));
+  };
+
+  handleCloseModal = () => {
+    this.setState(() => ({ showModal: false }));
   };
 
   render() {
@@ -144,14 +155,36 @@ class ExpenseForm extends React.Component {
               <button
                 type="button"
                 className={styles.form__button_danger}
-                onClick={() => {
-                  const id = this.props.expense.id;
-                  this.props.dispatch(startRemoveExpense({ id }));
-                  this.props.history.push("/");
-                }}
+                onClick={this.handleOpenModal}
               >
                 Remove
               </button>
+              <Modal
+                open={this.state.showModal}
+                onClose={this.handleCloseModal}
+                center
+              >
+                <h2>Are you sure?</h2>
+                <p>This expense item will be removed permanently</p>
+                <div className={styles.form__button_group_modal}>
+                  <button
+                    className={styles.form__button_primary}
+                    onClick={() => {
+                      const id = this.props.expense.id;
+                      this.props.dispatch(startRemoveExpense({ id }));
+                      this.props.history.push("/");
+                    }}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    className={styles.form__button_default}
+                    onClick={this.handleCloseModal}
+                  >
+                    No
+                  </button>
+                </div>
+              </Modal>
             </div>
           )}
         </form>

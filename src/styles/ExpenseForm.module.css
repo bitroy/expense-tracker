@@ -32,6 +32,11 @@
   justify-content: space-between;
 }
 
+.form__button_group_modal {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .form__button_primary {
   background: #0062b8;
   color: white;
@@ -46,7 +51,7 @@
 }
 
 .form__button_default {
-  background: #292b2c;
+  background: black;
   color: white;
   border: none;
   border-radius: 0.25rem;
