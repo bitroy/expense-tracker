@@ -3,9 +3,9 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { firebase, uiConfig } from "../firebase/firebase";
 import styles from "../styles/LoginPage.module.css";
 
-const LoginPage = ({ startLogin }) => {
+const LoginPage = () => {
   return (
-    <Fragment>
+    <div className={styles.container_login}>
       <div className={styles.page_header}>
         <div className={styles.page_header__text}>Expense Tracker</div>
       </div>
@@ -18,7 +18,7 @@ const LoginPage = ({ startLogin }) => {
           />
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
