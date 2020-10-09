@@ -1,10 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
+import { firebase } from "../firebase/firebase";
 import { history } from "../routes/AppRouter";
-import { startLogout } from "../redux/actions/auth";
 import styles from "../styles/Header.module.css";
 
-const Header = ({ startLogout }) => {
+const Header = () => {
   const handleClick = (url) => {
     history.push(url);
   };
@@ -17,15 +16,14 @@ const Header = ({ startLogout }) => {
       >
         Expense Tracker
       </div>
-      <div className={styles.navbar__div} onClick={startLogout}>
+      <div
+        className={styles.navbar__div}
+        onClick={() => firebase.auth().signOut()}
+      >
         Logout
       </div>
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  startLogout: () => dispatch(startLogout()),
-});
-
-export default connect(undefined, mapDispatchToProps)(Header);
+export default Header;

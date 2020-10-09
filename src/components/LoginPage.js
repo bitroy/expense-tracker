@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
-import { startLogin } from "../redux/actions/auth";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import { firebase, uiConfig } from "../firebase/firebase";
 import styles from "../styles/LoginPage.module.css";
 
 const LoginPage = ({ startLogin }) => {
@@ -12,17 +12,14 @@ const LoginPage = ({ startLogin }) => {
       <div className={styles.box_layout}>
         <div className={styles.box_layout__box}>
           <div className={styles.box_layout__name}>Login to Track Expenses</div>
-          <div className={styles.googlelogin} onClick={startLogin}>
-            Login with Google
-          </div>
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
         </div>
       </div>
     </Fragment>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  startLogin: () => dispatch(startLogin()),
-});
-
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+export default LoginPage;
