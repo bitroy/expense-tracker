@@ -15,24 +15,16 @@
 
 .list_item__row_description {
   font-weight: bold;
-  font-size: 4vw;
+  font-size: clamp(0.75rem, 0.75rem + 1vw, 1.5rem);
 }
 
 .list_item__row_amount {
-  font-size: 4vw;
+  font-size: clamp(0.75rem, 0.75rem + 1vw, 1.5rem);
 }
 
 @media screen and (min-width: 700px) {
   .list_item__row {
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .list_item__row_description {
-    font-size: 2vw;
-  }
-
-  .list_item__row_amount {
-    font-size: 2vw;
   }
 }
