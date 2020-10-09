@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { firebase, uiConfig } from "../firebase/firebase";
 import styles from "../styles/LoginPage.module.css";
