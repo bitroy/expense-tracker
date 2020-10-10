@@ -9,16 +9,26 @@ import {
 import { setStartDate, setEndDate } from "../redux/actions/filters";
 import styles from "../styles/ExpenseListFilters.module.css";
 
+const debounce = (cb, delay) => {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      cb(...args);
+    }, delay);
+  };
+};
+
 class ExpenseListFilters extends React.Component {
   state = {
     startDate: this.props.filters.startDate
       ? this.props.filters.startDate
       : null,
     endDate: this.props.filters.endDate ? this.props.filters.endDate : null,
+    searchText: this.props.filters.text,
   };
 
   setDateRange = (datearr) => {
-    console.log(datearr);
     if (datearr) {
       const startdate = datearr[0];
       const enddate = datearr[1];
@@ -46,6 +56,20 @@ class ExpenseListFilters extends React.Component {
     }
   };
 
+  searchForText = (text) => {
+    this.props.dispatch(setTextFilter(text));
+  };
+
+  searchForText = debounce(this.searchForText, 750);
+
+  handleSearch = (e) => {
+    const input = e.target.value.trim();
+    this.setState({
+      searchText: input,
+    });
+    this.searchForText(input);
+  };
+
   render() {
     return (
       <form className={styles.form}>
@@ -71,10 +95,8 @@ class ExpenseListFilters extends React.Component {
             type="text"
             placeholder="Search for Expense"
             className={styles.form__input_searchtext}
-            value={this.props.filters.text}
-            onChange={(e) => {
-              this.props.dispatch(setTextFilter(e.target.value.trim()));
-            }}
+            value={this.state.searchText}
+            onChange={(e) => this.handleSearch(e)}
           />
         </div>
       </form>
